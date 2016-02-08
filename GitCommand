@@ -1,0 +1,216 @@
+git add Filename	// add "working directory" files to "stage", staged files are ready to be committed to "Branches".
+git commit -m "Message Content"	// commit all the staged files, commit all the files in stage
+
+git status
+
+git log		// show commit history
+git log --pretty=oneline		// show the commit ID
+
+git diff		// compare the change of different version
+
+
+HEAD is the recent version. HEAD^ is the previous version. HEAD^^ is the version before the last version.
+HEAD~100	// 
+git reset --hard HEAD^		// change to the previous version
+git reset --hard CommitID
+
+git reflog		// show all of the command history
+
+git checkout -- FileName		// discard changes in working directory
+git reset HEAD FileName		// unstage the file, back to working directory
+
+场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- FileName。
+
+场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD FileName，就回到了场景1，第二步按场景1操作。
+
+场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。
+
+git add/rm FileName		// update what will be committed
+
+git rm FileName
+git commit -m "Delete files information"		// delete files in the repository
+
+------------------------------------------------------------------------------------------------------------------------------
+// Https:// clone
+git remote add origin https://github.com/UserName/RepositoryName.git
+git push -u origin master
+
+// SSH clone
+git remote add origin git@github.com:UserName/RepositoryName.git
+git push -u origin master
+
+要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；
+
+关联后，使用命令git push -u origin master第一次推送master分支的所有内容；
+
+此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；
+
+git clone git@github.com:UserName/RepositoryName.git		// SSH clone from remote server
+
+git remote rm [remote-name]
+
+------------------------------------------------------------------------------------------------------------------------------
+
+git checkout -b BranchName		// Switched to a new branch 'homework'
+git branch BranchName		// create a new branch
+git branch -d BranchName		// delete a branch after merge
+git branch -D BranchName		// delete a branch before merge
+git checkout BranchName		// switch to a new branch
+
+git branch		// list all branches
+
+git merge BranchName		// under master branch, merge into master
+git merge --no-ff -m "Information" BranchName
+
+神一般的Git！！！位于不同branch下，working directory下的文件都会改变……
+
+git log --graph --pretty=oneline --abbrev-commit		// 形成merge树状图
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Git还提供了一个stash功能，可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作
+git stash
+git stash list
+git stash apply
+git stash apply stash@{0}
+git stash drop
+git stash pop
+工作现场还在，Git把stash内容存在某个地方了，但是需要恢复一下，有两个办法：
+
+一是用git stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除；
+
+另一种方式是用git stash pop，恢复的同时把stash内容也删了
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+要查看远程库的信息，用git remote
+用git remote -v显示更详细的信息
+------------------------------------------------------------------------------------------------------------------------------------------------------
+git push origin BranchName
+git pull  origin BranchName
+当你的小伙伴从远程库clone时，默认情况下，你的小伙伴只能看到本地的master分支。
+你的小伙伴要在dev分支上开发，就必须创建远程origin的dev分支到本地，于是他用这个命令创建本地dev分支：
+git checkout -b dev origin/dev
+
+因此，多人协作的工作模式通常是这样：
+
+    首先，可以试图用git push origin branch-name推送自己的修改；
+
+    如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
+
+    如果合并有冲突，则解决冲突，并在本地提交；
+
+    没有冲突或者解决掉冲突后，再用git push origin branch-name推送就能成功！
+
+如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream branch-name origin/branch-name。
+要用git pull, 需先根据提示，设置dev和origin/dev的链接：
+git branch --set-upstream dev origin/dev
+
+小结：
+这就是多人协作的工作模式，一旦熟悉了，就非常简单。
+
+在本地创建和远程分支对应的分支，使用 git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
+
+建立本地分支和远程分支的关联，使用 git branch --set-upstream branch-name origin/branch-name；
+
+从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
+------------------------------------------------------------------------------------------------------------------------------------------------
+Amend latest commit (changing commit message or add forgotten files):
+
+$ git add [forgotten-file]
+$ git commit --amend
+
+Please note that this new amended commit will replace the previous commit.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+git tag TagName		// 在最近的commit上加上一个标签
+git tag TagName CommitID		// 在commit id 所在的位置加tag
+git tag -a TagName -m "Message" CommitID
+git tag -d TagName		// delete tag
+git push origin TagName		// push to remote server
+git push origin --tags		// 推送所有标签
+
+git tag		// 查看所有tag
+git show TagName		// 显示某个tag处的详情
+
+如果标签已经推送到远程，要删除远程标签就麻烦一点，先从本地删除，
+然后，从远程删除。删除命令也是push，但是格式如下：
+git push origin :refs/tags/TagName
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+git config --global color.ui true
+
+有些时候，你必须把某些文件放到Git工作目录中，但又不能提交它们，比如保存了数据库密码的配置文件啦，等等，每次git status都会显示Untracked files ...，有强迫症的童鞋心里肯定不爽。
+
+好在Git考虑到了大家的感受，这个问题解决起来也很简单，在Git工作区的根目录下创建一个特殊的.gitignore文件，然后把要忽略的文件名填进去，Git就会自动忽略这些文件。
+
+不需要从头写.gitignore文件，GitHub已经为我们准备了各种配置文件，只需要组合一下就可以使用了。所有配置文件可以直接在线浏览：https://github.com/github/gitignore
+
+git config --global alias.unstage 'reset HEAD'
+
+
+在撤销修改一节中，我们知道，命令git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区。既然是一个unstage操作，就可以配置一个unstage别名：
+
+$ git config --global alias.unstage 'reset HEAD'
+
+当你敲入命令：
+
+$ git unstage test.py
+
+实际上Git执行的是：
+
+$ git reset HEAD test.py
+
+配置一个git last，让其显示最后一次提交信息：
+
+$ git config --global alias.last 'log -1'
+
+这样，用git last就能显示最近一次的提交：
+
+$ git last
+commit adca45d317e6d8a4b23f9811c3d7b7f0f180bfe2
+Merge: bd6ae48 291bea8
+Author: Michael Liao <askxuefeng@gmail.com>
+Date:   Thu Aug 22 22:49:22 2013 +0800
+
+    merge & fix hello.py
+
+甚至还有人丧心病狂地把lg配置成了：
+
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+当前用户的Git配置文件放在用户主目录下的一个隐藏文件.gitconfig中
+------------------------------------------------------------------------------------------------------------------------------
+
+To see what remotes you have, you can list them. The -v flag tells you the URL of each remote (not just its name).
+
+$ git remote -v
+
+git clone [remote-url] [directory-name]		// specify a different name for the copied repository
+
+git push [remote-name] [remote-branch]		// pushing to the remote branch from the branch your HEAD pointer is currently referencing
+
+*********************************************************************************
+git fetch [remote-name]		//  Fetching the changes will only update your local copy of the remote code but not merge the changes into your own code.
+
+git fetch origin
+git branch review-ai-fix origin/fixing-ai-heuristics
+git checkout review-ai-fix
+
+The second command creates a new branch called review-ai-fix that tracks the fixing-ai-heuristics branch on the origin remote.
+问题是，和当前HEAD相同名称的branch内容存哪里……
+**********************************************************************************
+
+$ git pull [remote-name] [remote-branch-name]		// fetch+merge, pull the most recent changes and merge the changes into your HEAD branch.
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+

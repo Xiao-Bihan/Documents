@@ -1,0 +1,21 @@
+sudo dpkg --get-selections | grep fcitx
+
+sudo add-apt-repository ppa:fcitx-team/nightly 
+sudo apt-get update 
+sudo apt-get install fcitx fcitx-config-gtk fcitx-sogoupinyin fcitx-frontend-all fcitx-modules
+sudo apt-get install fcitx-ui* fcitx-ui-classic
+
+
+以上安装软件的介绍如下：
+1.fcitx：fcitx主程序
+2.fcitx-sogoupinyin ：fcitx的搜狗拼音词库。（你也可以换成其他类型的词库比如五笔、rime等等，具体可以终端输入aptitude search fcitx搜索。）
+3.fcitx-config-gtk：fcitx的gtk的设置图形界面。
+4.fcitx-frontend-all：fcitx在所有环境下的前端。（有qt、gtk2、gtk3下对应的包组成。）
+5.fcitx-module-cloudpinyin：fcitx的云拼音模块。
+6.fcitx-ui-classic：fcitx的经典UI显示模块。（此软件包不能被fcitx-ui-light或者fcitx-ui-qimpanel代替，应为该包默认包含着fcitx-module-x11，有了它才能在让fcitx在图形界面上显示出输入框。）
+
+
+cd /etc/fonts/conf.d/
+sudo ln -s /etc/fonts/conf.avail/29-language-selector-zh.conf
+sudo ln -s /etc/fonts/conf.avail/69-language-selector-zh-cn.conf
+sudo ln -s /etc/fonts/conf.avail/99-language-selector-zh.conf

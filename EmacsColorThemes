@@ -1,0 +1,24 @@
+下载color-theme, 按照Reademe操作
+
+(require 'color-theme)
+
+
+
+(color-theme-andreas)
+(color-theme-arjen)
+(color-theme-bharadwaj-slate)
+(color-theme-classic)
+(color-theme-feng-shui)
+(color-theme-greiner)
+(color-theme-gtk-ide)
+(color-theme-jonadabian-slate)
+(color-theme-katester)
+(color-theme-mistyday)
+(color-theme-robin-hood)
+(color-theme-shaman)
+(color-theme-snow)
+(color-theme-scintilla)
+(color-theme-emacs-21)
+(color-theme-wheat)
+
+

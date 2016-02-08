@@ -1,0 +1,27 @@
+进入解压缩后的文件夹
+1 	cd Python-3.1.2
+
+　　在编译前先在/usr/local建一个文件夹python3（作为python的安装路径，以免覆盖老的版本）
+1 	mkdir /usr/local/python3
+
+　　开始编译安装
+1 	./configure --prefix=/usr/local/python3
+2 	make
+3 	make install
+
+/*　　此时没有覆盖老版本，再将原来/usr/bin/python链接改为别的名字(Do not change this!!!)
+1 	mv /usr/bin/python /usr/bin/python_old	*/	
+
+　　再建立新版本python的链接
+1 	ln -s /usr/local/python3/bin/python3 /usr/bin/python3
+
+　　这个时候输入
+1 	python3
+
+　　就会显示出python的新版本信息
+1 	Python 3.1.2 (r312:79147, Oct 21 2012, 01:03:21))
+2 	[GCC 3.2.2 20030222 (Red Hat Linux 3.2.2-5)] on linux2
+3 	Type "help", "copyright", "credits" or "license" for more information.
+4 	>>>
+
+　　PS：如果不建立新安装路径python3，而是直接默认安装，则安装后的新python应该会覆盖linux下自带的老版本，也有可能不覆盖，具体看安装过程了，这个大家可以自己试验下，当然如果还想保留原来的版本，那么这种方法最好不过了。

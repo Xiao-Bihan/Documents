@@ -1,0 +1,71 @@
+shift+PrtSc		// 截取部分屏幕并保存到某处……
+Alt+PrtSc		// 截取当前活动窗口并保存到某处……
+
+命令行复制粘贴
+Ctrl+Shift+c		// 复制
+Ctrl+Shift+v		// 粘贴
+
+
+cat FileName		// show the content of the file in terminal
+
+mkdir DirectoryName	// make a new directory
+
+cd		// go to home directory
+~	is the home directory
+..	is the parent directory
+cd ~	// go to home directory
+cd ..	// go up one directory
+
+rm FileName		// remove file
+rm -r DirectoryName		// remove directory
+
+ls		// list the files and folders inside of the current directory
+ls -la		// list all files and folders including hiden ones
+ls -al ~/.ssh		// list all files and folders inside of .ssh
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+ssh-keygen -t rsa -b 4096 -C "SevensParadox@gmail.com"
+# Creates a new ssh key, using the provided email as a label
+# Generating public/private rsa key pair.
+
+Enter file in which to save the key (/Users/you/.ssh/id_rsa): [Press enter]
+
+Enter passphrase (empty for no passphrase): [Type a passphrase]
+# Enter same passphrase again: [Type passphrase again]
+
+Your identification has been saved in /home/mnemosyne/.ssh/id_rsa.
+Your public key has been saved in /home/mnemosyne/.ssh/id_rsa.pub.
+
+The key fingerprint is:
+6b:ba:fd:2e:be:84:6e:43:3b:e1:ae:54:59:fd:00:50 SevensParadox@gmail.com
+
+The key's randomart image is:
++--[ RSA 4096]----+
+|      .oE        |
+|         o       |
+|        . o      |
+|       o   o     |
+|      o S   .    |
+|     .o. .       |
+|    .o.o+        |
+|   . .*=.        |
+|    .+==+=o      |
++-----------------+
+
+
+#1.Ensure ssh-agent is enabled:
+# start the ssh-agent in the background
+eval "$(ssh-agent -s)"
+# Agent pid 4417
+
+#2.Add your SSH key to the ssh-agent:
+ssh-add ~/.ssh/id_rsa
+
+ssh -T git@github.com		// SSH into GitHub
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+

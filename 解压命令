@@ -1,0 +1,8 @@
+.tar.gz     格式解压为          tar   -zxvf   xx.tar.gz
+
+.tar.bz2   格式解压为          tar   -jxvf    xx.tar.bz2
+
+$ cd yourfile     # 一般解压出的是文件夹，进入
+$ ./configure --prefix=/usr/local/python3  # 配置地址
+$ make            # 编译，也不一定是编译，得看具体是什么了
+$ sudo make install      # 安装，一般需要root权限
