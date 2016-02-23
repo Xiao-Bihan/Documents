@@ -2,6 +2,7 @@
 搜索功能，对外复制粘贴功能真要人命！一点儿都不好用！
 
 退出 Emacs	C-x C-c
+退出buffer C-x k
 Alt+x ansi-term   // open a shell-mode buffer
 在允许 C-z 的系统中，C-z 会把 Emacs“挂起”，也就是说，它会回到 shell但不退出 Emacs。
 在常用的 shell 中，通常可以用“fg”或者“%emacs”命令再次回到 Emacs 中。
