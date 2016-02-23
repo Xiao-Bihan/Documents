@@ -3,7 +3,7 @@ git commit -m "Message Content"	// commit all the staged files, commit all the f
 
 git status
 
-git log		// show commit history
+git log	--decorate	// show commit history
 git log --pretty=oneline		// show the commit ID
 
 git diff		// compare the change of different version

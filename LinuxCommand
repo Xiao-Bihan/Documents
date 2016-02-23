@@ -19,7 +19,9 @@ cd ..	// go up one directory
 rm FileName		// remove file
 rm -r DirectoryName		// remove directory
 
-ls		// list the files and folders inside of the current directory
+man ls
+ls -all/-a
+ls -l   // detailed information
 ls -la		// list all files and folders including hiden ones
 ls -al ~/.ssh		// list all files and folders inside of .ssh
 
@@ -65,7 +67,10 @@ ssh-add ~/.ssh/id_rsa
 ssh -T git@github.com		// SSH into GitHub
 
 -----------------------------------------------------------------------------------------------------------------------------------
+Linux从命令行打开文件夹
+open /
+open /usr
 
+pwd // print working directory
 
-
-
+********************
