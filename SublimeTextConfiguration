@@ -1,0 +1,13 @@
+Sublime Text Configuration
+
+Call Package Control:
+Command + shift + P
+Then type in "install package"
+
+Packages:
+1. ConverttoUTF8
+2. sidebarEnhencement
+3. BracketHighlighter
+//sublimeCodeIntel  #autocomplete
+//Emmet    #input multiple elements
+//SublimeLinter    #error hint

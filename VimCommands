@@ -1,1 +1,57 @@
+"*y/"+y     copy to  system clipboard
+"*d/"+d     cut to system clipboard
+"*p/"+p     paste from system clipboard
 
+y		copy
+yy		copy current line(THERE ARE PROBLEMS WITH NEW LINE CHARACTER.)
+p		paste after cursor
+P		paste before cursor
+
+
+:e <path/to/file>			open file
+:w					write to file
+:saveas <path/to/file>		save to <path/to/file>
+:q					quit
+:wq					save and quit
+:q!					quit without save
+:qa!					quit all buffer without save
+
+:bn/:bp				switch to next/previous buffer
+
+:syntax on
+
+
+u					undo
+
+0					go to the first column
+$					go to the end of the column
+^					go to the first non-blank character of the line
+g_					go the last non-blank character of the line
+gg					go to the beginning of the file
+G					go to the end of the file
+
+/pattern				search for pattern
+
+v 					visual select
+<C-v>(Ctrl-v) 			visual block select
+
+
+:split
+:vsplit
+
+
+************************************************
+some extra tips:
+
+'' (two single quotes) takes you back to where you were so gg=G''
+
+I'll never be able to unlearn my precious 1G =) One of my favorites is =% standing on an opening bracket. It fixes the indents of the whole block.
+
+To indent a block of code, go to one of the braces and use command
+=%
+
+To indent the all the lines below the current line
+=G
+
+To indent the current line
+==

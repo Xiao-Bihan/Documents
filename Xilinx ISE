@@ -1,0 +1,18 @@
+Xilinx ISE
+
+shared directory:		/mnt/hgfs
+
+
+Install:
+./xsetup
+
+Configure:
+. /data/Xilinx/14.7/ISE_DS/setting32.sh
+source /data/Xilinx/14.7/ISE_DS/setting32.sh
+
+Run:
+cd /data/Xilinx/14.7/ISE_DS/ISE/bin/lin
+./ise
+
+License:
+xlcm -manage

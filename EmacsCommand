@@ -46,7 +46,7 @@ C-x  ^  窗格纵向扩大
 C-x C-b   列出缓冲区
   
 C-x C-s   储存当前缓冲区
-C-x C-w   另存为当前缓冲区
+C-x C-w   另存为当前缓冲区 Save as
 C-x s   保存多个缓冲区
 
 C-x C-f         寻找文件。
@@ -106,11 +106,14 @@ C-x ]   移动到buffer结束
  
  
 *******************************************************************************************************************
+
+搜索和替换
  
 C-s 是向前搜索，C-r 是向后搜索, 敲 <Return> 结束搜索
 非常不好用！！！！
 
-M-% : 查找替换query replace (‘space’ to replace, ‘n’ to skip, ‘!’ to replace all)
+M-% : 查找替换 query replace 
+(‘space’ or 'y' to replace, ‘n’ to skip, ‘!’ to replace all)
 
 
 ***************************************************************************************************************
@@ -170,3 +173,8 @@ Scroll up and down when in Emacs ansi-term mode
 C-c C-j  go to “line run” then use normal cursor movement keys
 C-c C-k go back to “char mode” to interact with terminal.
 ************************************************************************************************************************
+Macro 用法
+
+C-x (                         开始录制
+C-x )                         结束录制
+C-u 12 C-x e              repeat the macro n (12 in this case) times.
