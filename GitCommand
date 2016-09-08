@@ -27,6 +27,7 @@ git reset HEAD FileName		// unstage the file, back to working directory
 
 git add/rm FileName		// update what will be committed
 
+### How to delete files.
 git rm FileName
 git commit -m "Delete files information"		// delete files in the repository
 
@@ -204,6 +205,41 @@ The second command creates a new branch called review-ai-fix that tracks the fix
 
 $ git pull [remote-name] [remote-branch-name]		// fetch+merge, pull the most recent changes and merge the changes into your HEAD branch.
 ------------------------------------------------------------------------------------------------------------------------------------------
+
+Working Flow
+
+1. Fork from others
+
+2. Clone from your forked repository
+	###
+	git clone https://github.com/BihanXiao/D3Labs.git
+	###
+
+2'. Or add an empty repository as origin
+	###
+	git remote add origin https://github.com/UserName/RepositoryName.git		// This repository is called origin.
+	###
+
+3. git remote add [give-it-a-nickname] [remote-official-url]
+	###
+	git remote add cs9053 https://github.com/NYU-CS9053/Fall-2016.git		// This repository is called cs9053.
+	###
+
+4. git pull [nickname] master
+	###
+	git pull cs9053 master
+	###
+
+4'. git pull origin master		// pull from your own repository
+
+5. git push -u origin master		// This will push to where you cloned from. 
+	###
+	git push 		might have default parameters. (-u origin master)
+	###
+
+6. From your forked repository, create a pull request to the original owner.
+
+************************************************************************************************************************************************************
 
 
 
