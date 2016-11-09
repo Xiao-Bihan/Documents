@@ -1,0 +1,34 @@
+Vitual Machine
+
+************************************************************************************
+Expend Linux disk space.
+
+
+
+************************************************************************
+VirtualBox Share folder
+
+Install VirtualBox on host, install Guest Additions on Linux.
+1. With the Virtual Machine powered off and selected in VirtualBox, go to: Machine > Settings ... > Shared Folders
+2. For “Folder Path”, click the icon to browse for the folder you want to share.
+3. For “Folder Name”, enter a name to describe the share.
+4. Click “OK” and start the virtual machine again.
+5. Create a mount point which is basically an empty folder.
+6. Fire up the terminal and type: sudo mount -t vboxsf folder_name path_to_mount_point folder_name is the name you typed in earlier to describe the share
+7. You should be able to browse the shared folder now.
+
+In case of difficulties mounting the same, such as the following error:
+	________________________________________________
+	mount: wrong fs type, bad option, bad superblock on mydata,
+	   missing codepage or helper program, or other error
+	   (for several filesystems (e.g. nfs, cifs) you might
+	   need a /sbin/mount.<type> helper program)
+	   In some cases useful info is found in syslog - try
+	   dmesg | tail  or so
+	_________________________________________________
+
+Try the following:
+sudo rm /sbin/mount.vboxsf
+sudo ln -s /opt/VBoxGuestAdditions-4.3.10/lib/VBoxGuestAdditions/mount.vboxsf /sbin/mount.vboxsf
+
+************************************************************************************

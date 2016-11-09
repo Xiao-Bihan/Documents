@@ -1,0 +1,24 @@
+### iSim Commands:
+
+isim force add {/rightrotate/a} 2B885111 -radix hex -time 20 ps -cancel 100 ns
+
+isim force add {/rightrotate/b} 67 -radix unsigned -time 20 ps -cancel 100 ns
+
+isim force add {/rightrotate/b} 33 -radix unsigned -time 20 ps -value 2 -radix unsigned -time 100 ns -value 67 -radix unsigned -time 200 ns -value 31 -radix unsigned -time 300 ns -value 64 -radix unsigned -time 400 ns
+
+isim force add {/rightrotate/b} 33 -time 0 -value 2 -time 100ns -value 67 -time 200ns -value 31 -time 300ns -value 64 -time 400ns -repeat 500ns -cancel 1us
+
+isim force add {/rightrotate/b} 33 -time 0 2 -time 100ns 67 -time 200ns 31 -time 300ns 64 -time 400ns -repeat 500ns -cancel 1us
+
+## proven to be correct:
+isim set radix unsigned/hex/dec/bin/oct
+run 100ns
+
+*********************
+### Adept 2 Commands
+
+djtgcfg enum
+
+djtgcfg init -d Nexys4DDR
+
+djtgcfg prog -d Nexys4DDR -i 0 -f *.bit
